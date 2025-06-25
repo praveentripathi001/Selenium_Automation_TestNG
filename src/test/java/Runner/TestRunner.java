@@ -12,7 +12,7 @@ import io.cucumber.testng.CucumberOptions;
 	    dryRun=false,
 	    publish=false,
 	    plugin= {"pretty","html:target/CucumberReports/CucumberReport.html"},
-	    tags="@smoke"                      // "@regression or @smoke", "@regression and @smoke"
+	    tags="@all"                      // "@regression or @smoke", "@regression and @smoke"
 	   // monochrome = true            // This is optional and no need to use in cucumber latest version as we don't get junk text in eclipse output console.
 	    )
 
