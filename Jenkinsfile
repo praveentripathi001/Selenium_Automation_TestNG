@@ -35,10 +35,15 @@ pipeline {
             }
         }
         
+        stage('Archive HTML Report') {
+    steps {
+        archiveArtifacts artifacts: 'target/CucumberReports/*.html', allowEmptyArchive: true
+    }
+}
 
         stage('Publish TestNG Results') {
             steps {
-               junit 'target/surefire-reports/testng-results.xml'
+               publishTestNG testResultsPattern: 'target/surefire-reports/testng-results.xml'
             }
         }
     }
