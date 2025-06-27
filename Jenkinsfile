@@ -35,15 +35,10 @@ pipeline {
             }
         }
         
-        stage('Check Reports') {
-    steps {
-        bat 'dir test-output'
-   		 }
-	}	
 
         stage('Publish TestNG Results') {
             steps {
-                publishTestNG testResultsPattern: 'test-output/testng-results.xml'
+                publishTestNG testResultsPattern: 'target/surefire-reports/testng-results.xml'
             }
         }
     }
