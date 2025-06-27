@@ -35,17 +35,16 @@ pipeline {
             }
         }
         
-        stage('Archive HTML Report') {
+	stage('Publish HTML Report') {
     steps {
-        archiveArtifacts artifacts: 'target/CucumberReports/*.html', allowEmptyArchive: true
-    }
-}
-
-        stage('Publish TestNG Results') {
-            steps {
-               publishTestNG testResultsPattern: 'target/surefire-reports/testng-results.xml'
-            }
-        }
+        publishHTML(target: [
+    reportDir: 'target/CucumberReports',
+    reportFiles: 'CucumberReport_*.html',
+    reportName: 'Cucumber Report'
+        ])
+   	 }
+	}
+        
     }
 
     post {
