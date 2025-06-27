@@ -19,21 +19,27 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
 
         stage('Generate Reports') {
             steps {
-                sh 'mvn verify'
+                bat 'mvn verify'
             }
         }
+        
+        stage('Check Reports') {
+    steps {
+        bat 'dir test-output'
+   		 }
+	}	
 
         stage('Publish TestNG Results') {
             steps {
